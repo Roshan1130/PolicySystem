@@ -1,12 +1,17 @@
 package com.policysystem.entities;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +39,18 @@ public class CustomerEntity {
 	
 	@Column(name="dateOfBirth")
 	private Date date;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name="customer_id")
+	private List<AddressEntity> addresses;
+	
+	public List<AddressEntity> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<AddressEntity> addresses) {
+		this.addresses = addresses;
+	}
 
 	public Integer getId() {
 		return id;
