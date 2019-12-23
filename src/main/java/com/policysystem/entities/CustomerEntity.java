@@ -21,11 +21,6 @@ public class CustomerEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	
-	
-	
-	
-	
 	@Column(name="name")
 	private String name;
 	
