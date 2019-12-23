@@ -1,15 +1,22 @@
 package com.policysystem.entities;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="policies")
+@Table(name="policy")
 public class PolicyEntity {
 	
 	@Id
@@ -22,14 +29,38 @@ public class PolicyEntity {
 	@Column(name="policyNo")
 	private Long policyNo;
 	
-	@Column(name="start")
+	@Column(name="startDate")
 	private Date startDate;
 	
-	@Column(name="expire")
+	@Column(name="expireDate")
 	private Date expireDate;
 	
 	@Column(name="price")
 	private Integer price;
+	
+	@OneToMany(mappedBy = "policy", cascade =CascadeType.ALL )
+	private List<CoveredVehicles> coveredVehicles;
+	
+	@ManyToOne
+	@JoinColumn(name="customerId")
+	private CustomerEntity customer;
+	
+	
+	public CustomerEntity getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(CustomerEntity customer) {
+		this.customer = customer;
+	}
+
+	public List<CoveredVehicles> getCoveredVehicles() {
+		return coveredVehicles;
+	}
+
+	public void setCoveredVehicles(List<CoveredVehicles> coveredVehicles) {
+		this.coveredVehicles = coveredVehicles;
+	}
 
 	public Integer getId() {
 		return id;

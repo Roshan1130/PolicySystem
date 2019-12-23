@@ -38,7 +38,8 @@ public class AddressEntity {
 	@Column(name="type")
 	private String type;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="customer_id")
 	private CustomerEntity customer;
 	
 	public CustomerEntity getCustomer() {
@@ -104,7 +105,4 @@ public class AddressEntity {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	
-	
 }

@@ -40,10 +40,21 @@ public class CustomerEntity {
 	@Column(name="dateOfBirth")
 	private Date date;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="customer_id")
+	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<AddressEntity> addresses;
 	
+	@OneToMany(mappedBy = "customer")
+	private List<PolicyEntity> policies;
+	
+	
+	public List<PolicyEntity> getPolicies() {
+		return policies;
+	}
+
+	public void setPolicies(List<PolicyEntity> policies) {
+		this.policies = policies;
+	}
+
 	public List<AddressEntity> getAddresses() {
 		return addresses;
 	}

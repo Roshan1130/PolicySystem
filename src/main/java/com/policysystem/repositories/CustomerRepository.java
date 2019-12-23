@@ -15,7 +15,7 @@ public class CustomerRepository {
 	private EntityManager em;
 	
 	public void addCustomer(CustomerEntity c) {
-		em.persist(c);
+		em.merge(c);
 	}
 	
 
