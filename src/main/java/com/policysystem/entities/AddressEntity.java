@@ -38,7 +38,7 @@ public class AddressEntity {
 	@Column(name="type")
 	private String type;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="customer_id")
 	private CustomerEntity customer;
 	

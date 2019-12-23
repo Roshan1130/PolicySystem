@@ -27,7 +27,7 @@ public class CreatePolicy {
 		PolicyRepository pr = (PolicyRepository) ctx.getBean("policyRepository");
 		AddressRepository ar = (AddressRepository) ctx.getBean("addressRepository");
 		CoveredVehiclesRepository cvr = (CoveredVehiclesRepository) ctx.getBean("coveredVehiclesRepository");
-		
+
 		// date
 		Calendar cal1 = Calendar.getInstance();
 		cal1.set(Calendar.YEAR, 1995);
@@ -43,6 +43,9 @@ public class CreatePolicy {
 		c1.setPhone("+977829129");
 		c1.setLastFourSsn("8372");
 		c1.setDate(date);
+		
+		c1=cr.addCustomer(c1);
+		
 
 		// address 1
 		AddressEntity ae1 = new AddressEntity();
@@ -53,13 +56,7 @@ public class CreatePolicy {
 		ae1.setZip("21343-3455");
 		ae1.setType("Mailing");
 		ae1.setCustomer(c1);
-		
-		/*
-		 * List<AddressEntity> addresses = new ArrayList<AddressEntity>();
-		 * addresses.add(ae1); ar.addAddress(ae1);
-		 */
 
-		
 		// address 2
 		AddressEntity ae2 = new AddressEntity();
 		ae2.setStreet1("9336 Lester Highway");
@@ -69,14 +66,13 @@ public class CreatePolicy {
 		ae2.setZip("21343-3455");
 		ae2.setType("Residence");
 		ae2.setCustomer(c1);
-
-		/*
-		 * List<AddressEntity> addresses2 = new ArrayList<AddressEntity>();
-		 * addresses.add(ae2); ar.addAddress(ae2);
-		 * 
-		 * c1.setAddresses(addresses2);
-		 */
 		
+		System.out.println("inserting add 1...");
+		ar.addAddress(ae1);
+		System.out.println("inserting add2...");
+		ar.addAddress(ae2);
+
+
 		// Policy Entity
 		PolicyEntity policy = new PolicyEntity();
 		policy.setType("Vehicle Insurance");
@@ -85,55 +81,30 @@ public class CreatePolicy {
 		policy.setStartDate(new Date());
 		policy.setExpireDate(new Date());
 		policy.setCustomer(c1);
+		
+	 List<CoveredVehicles> vehicles =  new ArrayList<CoveredVehicles>();
 
-					
 		// coveredVehicles
 		CoveredVehicles cv = new CoveredVehicles();
 		cv.setMake("Toyota");
 		cv.setModel("Camry");
-		cv.setVin("xjhf59873r148");
+		cv.setVin("ajhu99873r148");
 		cv.setYear(2005);
 		cv.setColor("Yellow");
 		cv.setPolicy(policy);
 		
-	
+		vehicles.add(cv);
+		policy.setCoveredVehicles(vehicles);
 		
-		
-		cr.addCustomer(c1);
-		System.out.println("customer added");
-		ar.addAddress(ae1);
-		System.out.println("1st address done");
-		ar.addAddress(ae1);
-		
-		System.out.println("2nd address done");
-		//pr.addPolicy(policy);
+		System.out.println("adding policy...");
+		pr.addPolicy(policy);
 
-
+		System.out.println("done");System.out.println(policy.toString());
 		
-		
-		/*
-		 * cvr.addVehicle(cv);
-		 * 
-		 * pr.addPolicy(policy);
-		 */
+//		cvr.addVehicle(cv);
+//
+//		pr.addPolicy(policy);
 
-
-		
-		//
-		/*
-		 * List<CoveredVehicles> coveredVehicles = new ArrayList<CoveredVehicles>();
-		 * coveredVehicles.add(cv);
-		 * 
-		 * // set vehicle to the policy policy.setCoveredVehicles(coveredVehicles);
-		 * 
-		 * List<PolicyEntity> policies = new ArrayList<PolicyEntity>();
-		 * policies.add(policy);
-		 * 
-		 * 
-		 * //set policy to customer c1.setPolicies(policies); // add customer
-		 * pr.addPolicy(policy);
-		 */
-
-		}
+	}
 
 }
