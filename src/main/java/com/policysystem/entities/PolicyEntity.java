@@ -109,6 +109,13 @@ public class PolicyEntity {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
+
+	@Override
+	public String toString() {
+		return "PolicyEntity [id=" + id + ", type=" + type + ", policyNo=" + policyNo + ", startDate=" + startDate
+				+ ", expireDate=" + expireDate + ", price=" + price + ", coveredVehicles=" + coveredVehicles
+				+ ", customer=" + customer + "]";
+	}
 	
 	
 	
