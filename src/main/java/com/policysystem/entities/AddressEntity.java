@@ -38,7 +38,7 @@ public class AddressEntity {
 	@Column(name="type")
 	private String type;
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="customer_id")
 	private CustomerEntity customer;
 	
@@ -105,4 +105,12 @@ public class AddressEntity {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	@Override
+	public String toString() {
+		return "AddressEntity [id=" + id + ", street1=" + street1 + ", street2=" + street2 + ", city=" + city
+				+ ", state=" + state + ", zip=" + zip + ", type=" + type + "]";
+	}
+	
+	
 }

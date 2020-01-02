@@ -42,7 +42,7 @@ public class CustomerEntity {
 	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<AddressEntity> addresses;
 	
-	@OneToMany(mappedBy = "customer")
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private List<PolicyEntity> policies;
 	
 	
@@ -118,6 +118,14 @@ public class CustomerEntity {
 		this.date = date;
 	}
 
+	@Override
+	public String toString() {
+		return "CustomerEntity [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", gender="
+				+ gender + ", lastFourSsn=" + lastFourSsn + ", date=" + date + "\n , addresses=" + addresses
+				+ "]";
+	}
+
+	
 	
 	
 	

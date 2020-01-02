@@ -41,11 +41,21 @@ public class PolicyEntity {
 	@OneToMany(mappedBy = "policy", cascade =CascadeType.ALL )
 	private List<CoveredVehicles> coveredVehicles;
 	
-	@ManyToOne
+	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="customerId")
 	private CustomerEntity customer;
 	
+	@OneToMany(mappedBy = "policy", fetch= FetchType.LAZY, cascade =CascadeType.ALL)
+	private List<CoveredDrivers> coveredDrivers;
 	
+	public List<CoveredDrivers> getCoveredDrivers() {
+		return coveredDrivers;
+	}
+
+	public void setCoveredDrivers(List<CoveredDrivers> coveredDrivers) {
+		this.coveredDrivers = coveredDrivers;
+	}
+
 	public CustomerEntity getCustomer() {
 		return customer;
 	}
@@ -113,8 +123,7 @@ public class PolicyEntity {
 	@Override
 	public String toString() {
 		return "PolicyEntity [id=" + id + ", type=" + type + ", policyNo=" + policyNo + ", startDate=" + startDate
-				+ ", expireDate=" + expireDate + ", price=" + price + ", coveredVehicles=" + coveredVehicles
-				+ ", customer=" + customer + "]";
+				+ ", expireDate=" + expireDate + ", price=" + price +  "\n , customer=" + customer + "]";
 	}
 	
 	
