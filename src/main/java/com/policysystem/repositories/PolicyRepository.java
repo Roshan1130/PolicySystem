@@ -1,5 +1,9 @@
 package com.policysystem.repositories;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -23,6 +27,12 @@ private EntityManager em;
 		query.setParameter("pn", policyNo);
 		PolicyEntity p = (PolicyEntity) query.getSingleResult();
 		return p;
+	}
+	
+	public List<PolicyEntity> findExpiredPolicies() {
+		Query q = (Query) em.createQuery("select p from PolicyEntity p where p.expiryDate <: today");
+		q.setParameter("today", new Date());
+		return q.getResultList();		
 	}
 	
 	public EntityManager getEm() {

@@ -40,11 +40,11 @@ public class CreatePolicy {
 
 		// customer
 		CustomerEntity c1 = new CustomerEntity();
-		c1.setName("Mr Ramtel");
-		c1.setEmail("ramte4.1133@gmail.com");
+		c1.setName("Mr Hari");
+		c1.setEmail("ramt944.1133@gmail.com");
 		c1.setGender("M");
-		c1.setPhone("+47782931282");
-		c1.setLastFourSsn("8373");
+		c1.setPhone("+48782901282");
+		c1.setLastFourSsn("8371");
 		c1.setDate(date);
 		
 		c1=cr.addCustomer(c1);
@@ -52,7 +52,7 @@ public class CreatePolicy {
 
 		// address 1
 		AddressEntity ae1 = new AddressEntity();
-		ae1.setStreet1("9335 Leet Highway");
+		ae1.setStreet1("9335 Heet Highway");
 		ae1.setStreet2("Apt 1104");
 		ae1.setCity("Fairfax");
 		ae1.setState("Virginia");
@@ -62,7 +62,7 @@ public class CreatePolicy {
 
 		// address 2
 		AddressEntity ae2 = new AddressEntity();
-		ae2.setStreet1("9336 Lester Highway");
+		ae2.setStreet1("9336 Hester Highway");
 		ae2.setStreet2("Apt 1040");
 		ae2.setCity("Fairfax");
 		ae2.setState("Virginia");
@@ -81,7 +81,7 @@ public class CreatePolicy {
 		PolicyEntity policy = new PolicyEntity();
 		policy.setType("Vehicle Insurance");
 		policy.setPrice(2000);
-		policy.setPolicyNo(25489l);
+		policy.setPolicyNo(25480l);
 		policy.setStartDate(new Date());
 		policy.setExpireDate(new Date());
 		policy.setCustomer(c1);
@@ -93,7 +93,7 @@ public class CreatePolicy {
 		CoveredVehicles cv = new CoveredVehicles();
 		cv.setMake("Toyota");
 		cv.setModel("Camry");
-		cv.setVin("ajro9ro873r168");
+		cv.setVin("ajro8ro873r168");
 		cv.setYear(2005);
 		cv.setColor("Yellow");
 		cv.setPolicy(policy);

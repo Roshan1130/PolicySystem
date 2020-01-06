@@ -20,17 +20,18 @@ public class ChangeAddress {
 		CustomerRepository cr = (CustomerRepository) ctx.getBean("customerRepository");
 		PolicyRepository pr = (PolicyRepository) ctx.getBean("policyRepository");
 		
-		PolicyEntity p1 = pr.findPolicyByPolicyNo(25489l);
+		PolicyEntity p1 = pr.findPolicyByPolicyNo(25480l);
 		//System.out.println(p1.toString());
 		
 		CustomerEntity c1 = p1.getCustomer();
 		
-		List<AddressEntity> addresses = new ArrayList<AddressEntity>();
+		List<AddressEntity> addresses = new ArrayList<AddressEntity>(); 
+		 
+
+		//findAddressEntities(c1.getId());
 		AddressEntity address1 = new AddressEntity();
-
-		findAddressEntities(c1.getId());
-
-		address1.setCity("Fairfax");
+		address1 =c1.getAddresses().get(0); 
+		address1.setCity("Mairmax");
 		address1.setState("Virginia");
 		address1.setStreet1("93 ssee highway");
 		address1.setStreet2("Apt 1105");
